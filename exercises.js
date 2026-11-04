@@ -168,6 +168,22 @@ function isPalindrome(word) {
 //             ***
 // ---------------------------------------------------------------------
 function buildTriangle(height) {
+    let form = "";
+    for (let i = 1; i <= height; i++) {
+        for (let u = 1; u <= i; u++){
+            form += "*";
+        }
+        
+        if (i < height) {
+            form += "\n";
+        }
+
+        if (height === 0) {
+            return ("");
+        }
+    }
+    return form;
+
 }
 
 
