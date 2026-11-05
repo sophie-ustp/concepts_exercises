@@ -254,6 +254,29 @@ function pointsToGrade(points) {
 //       5 Insufficient
 // ---------------------------------------------------------------------
 function gradeReport(student) {
+    let grade = pointsToGrade(student.points);
+    let description = "";
+
+    switch (grade) {
+        case 1:
+            description = "Excellent";
+            break;
+        case 2:
+            description = "Good";
+            break;
+        case 3:
+            description = "Satisfactory";
+            break;
+        case 4:
+            description = "Sufficient";
+            break;
+        case 5:
+            description = "Insufficient";
+            break;
+    }
+
+    return student.name + ": " + grade + " (" + description + ")";
+
 }
 
 
@@ -266,6 +289,40 @@ function gradeReport(student) {
 //   rockPaperScissors("rock", "paper") -> "Player 2 wins"
 // ---------------------------------------------------------------------
 function rockPaperScissors(choice1, choice2) {
+
+   if (
+    (choice1 !== "rock" && choice1 !== "paper" && choice1 !== "scissors" )
+   ){
+    return "Invalid input";
+   }
+
+   if ((choice2 !== "rock" && choice2 !== "paper" && choice2 !== "scissors" )){
+    return "Invalid input";
+   }
+
+   if (choice1 === choice2) {
+    return "Draw";
+   }
+
+   if (
+        (choice1 === "rock" && choice2 === "scissors") 
+        
+            
+   ){
+    return "Player 1 wins";
+   }
+
+   if ( 
+    (choice1 === "paper" && choice2 === "rock") 
+   ){
+    return "Player 1 wins";
+   }
+
+   if (choice1 === "scissors" && choice2 === "paper" ){
+    return "Player 1 wins";
+   }
+   
+   return "Player 2 wins";
 }
 
 
@@ -276,6 +333,19 @@ function rockPaperScissors(choice1, choice2) {
 // highest age, return the one that comes first. Empty array gives "".
 // ---------------------------------------------------------------------
 function findOldest(people) {
+    if (people.length === 0){
+        return "";
+    }
+
+    let oldest = people[0];
+    for (let i = 1; i < people.length; i++){
+        if (people[i].age > oldest.age) {
+            oldest = people[i];
+        }
+    }
+    
+    return oldest.name;
+   
 }
 
 
@@ -287,6 +357,16 @@ function findOldest(people) {
 //     -> ["Tom"]
 // ---------------------------------------------------------------------
 function namesAtLeastAge(people, minAge) {
+
+    let AgesPeople = [];
+
+    for(let i=0; i < people.length; i++) {
+        if (people[i].age >= minAge) {
+            AgesPeople.push(people[i].name);
+        }
+    }
+
+ return AgesPeople;
 }
 
 
@@ -298,6 +378,21 @@ function namesAtLeastAge(people, minAge) {
 //   cartTotal([{ item: "Pen", price: 2, quantity: 10 }]) -> 18
 // ---------------------------------------------------------------------
 function cartTotal(cart) {
+    let total = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+        let price = cart[i].price;
+        let quantity = cart[i].quantity;
+
+        let itemTotal = price * quantity;
+
+        if (quantity >= 10){
+            itemTotal = itemTotal * 0.9;
+
+        }
+        total += itemTotal;
+    }
+    return total;
 }
 
 
@@ -308,6 +403,18 @@ function cartTotal(cart) {
 //   isPrime(7) -> true,  isPrime(9) -> false
 // ---------------------------------------------------------------------
 function isPrime(n) {
+    if (n < 2) {
+        return false;
+    }
+    let i = 2;
+
+    while (i < n) {
+        if (n % i === 0 ) {
+            return false;
+        }
+        i++;
+    }
+    return true;
 }
 
 
@@ -318,6 +425,14 @@ function isPrime(n) {
 //   primesUpTo(10) -> [2, 3, 5, 7]
 // ---------------------------------------------------------------------
 function primesUpTo(n) {
+    let primes = [];
+
+    for (let i = 2; i <= n; i++){
+        if (isPrime(i)) {
+            primes.push(i);
+        }
+    }
+    return primes;
 }
 
 
@@ -332,6 +447,8 @@ function primesUpTo(n) {
 //     -> { wordCount: 4, longestWord: "quick" }
 // ---------------------------------------------------------------------
 function wordStatistics(sentence) {
+    
+
 }
 
 
